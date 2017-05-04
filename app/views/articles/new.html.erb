@@ -1,0 +1,19 @@
+<h1>Create an article</h1>
+
+<!-- Can mamnage forms easy wirh ruby "forms for" -->
+<%= form_for @article do |fff| %>
+  <p>
+    <%= fff.label :title %> <br>
+    <%= fff.text_field :title %>
+  </p>
+  
+  <p>
+    <%= fff.label :description %> <br>
+    <%= fff.text_area :description %>
+  </p>
+  
+  <p>
+    <%= fff.submit %>
+  </p>
+
+<% end %>
