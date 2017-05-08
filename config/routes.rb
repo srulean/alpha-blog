@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   root 'pages#home'
   get 'about', to: 'pages#about'
+  get 'home2', to: 'pages#home2'
   
   resources :articles
 

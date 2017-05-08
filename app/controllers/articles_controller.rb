@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: [:edit, :update, :show, :destroy]
   
   def index
     @articles = Article.all
@@ -11,7 +12,8 @@ class ArticlesController < ApplicationController
   
   def edit
     # Need to send in an Article object
-    @article = Article.find(params[:id])
+    # Took this out due to the before_action clause above.
+    # @article = Article.find(params[:id])
   end
   
   def create
@@ -28,7 +30,9 @@ class ArticlesController < ApplicationController
   
   def update
     # Used by the edit funciotn above.
-    @article = Article.find(params[:id])
+    
+    # Took this out due to the before_action clause above.
+    # @article = Article.find(params[:id])
     if @article.update(article_params)
       flash[:notice] = "Article was successfully updated."
       redirect_to article_path(@article)
@@ -38,19 +42,24 @@ class ArticlesController < ApplicationController
     end
   end
   
-  def show 
-    @article = Article.find(params[:id])
+  def show
+    # Took this out due to the before_action clause above.
+    # @article = Article.find(params[:id])
   end
   
   def destroy
-    @article = Article.find(params[:id])
+    # Took this out due to the before_action clause above.
+    # @article = Article.find(params[:id])
     @article.destroy
     
-    flash[:notice] = "Article was deleetd!"
+    flash[:notice] = "Article was deleted!"
     redirect_to articles_path
   end
   
   private 
+    def set_article
+      @article = Article.find(params[:id])
+    end
     def article_params
       params.require(:article).permit(:title, :description)
     end
