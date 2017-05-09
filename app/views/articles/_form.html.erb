@@ -7,22 +7,63 @@
   </ul>
 <% end %>
 
-<!-- Can mamnage forms easy wirh ruby "forms for" -->
-<%= form_for @article do |fff| %>
-  <p>
-    <%= fff.label :title %> <br>
-    <%= fff.text_field :title %>
-  </p>
-  
-  <p>
-    <%= fff.label :description %> <br>
-    <%= fff.text_area :description %>
-  </p>
-  
-  <p>
-    <%= fff.submit %>
-  </p>
+<div class='row'>
+  <div class='col-xs-12'>
+    
+    <!-- Can mamnage forms easy wirh ruby "forms for" -->
+    
+    <!-- This stacks vertically because each uses column2 (col-sm-2) -->
+    <%= form_for(@article, :html => {class: "form-horizontal", role: "form"}) do |fff| %>
+      <div class='form-group'>
+        <div class='control-label col-sm-2'>
+          <%= fff.label :title %>
+        </div>
+        <div class='col-sm-8'>
+          <%= fff.text_field :title, class: "form-control", placeholder: "Title of article", autofocus: true %>
+        </div>
+      </div>
+      
+      <div class='form-group'>
+        <div class='control-label col-sm-2'>
+          <%= fff.label :description %>
+        </div>
+        <div class='col-sm-8'>
+          <%= fff.text_area :description, rows: 10, class: "form-control", placeholder: "Description of article" %>
+        </div>
+      </div>
+      
+      <div class='form-group'>
+        <div class='col-sm-offset-2 col-sm-8'>
+          <%= fff.submit class: 'btn btn-primary btn-lrg' %>
+        </div>
+      </div>
+    <% end %>
+    
+    <!-- Try to make the cancle action a button, just like the create action -->
+    <div class="col-xs-4 col-xs-offset-4">
+      [ <%= link_to "Cancel & Return", articles_path %> ]
+    </div>
+    
+    <!-- first, un-styled approach
+    <%= form_for @article do |fff| %>
+      <p>
+        <%= fff.label :title %> <br>
+        <%= fff.text_field :title %>
+      </p>
+      
+      <p>
+        <%= fff.label :description %> <br>
+        <%= fff.text_area :description %>
+      </p>
+      
+      
+      <p>
+        <%= fff.submit %>
+      </p>
+    <% end %>
+    
+    <%= link_to "Back to Listing", articles_path %>
+    -->
 
-<% end %>
-
-<%= link_to "Back to Listing", articles_path %>
+  </div>
+</div>
