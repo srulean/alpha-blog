@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
     # Used by the new funciotn above.
     @article = Article.new(article_params)
     if @article.save
-      flash[:notice] = "Article was successfully created."
+      flash[:success] = "Article was successfully created."
       redirect_to article_path(@article)
     else
       #flash[:notice] = "Article was NOT successfully created."
@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
     # Took this out due to the before_action clause above.
     # @article = Article.find(params[:id])
     if @article.update(article_params)
-      flash[:notice] = "Article was successfully updated."
+      flash[:success] = "Article was successfully updated."
       redirect_to article_path(@article)
     else
       #flash[:notice] = "Article was NOT successfully created."
@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
     # @article = Article.find(params[:id])
     @article.destroy
     
-    flash[:notice] = "Article was deleted!"
+    flash[:danger] = "Article was deleted!"
     redirect_to articles_path
   end
   

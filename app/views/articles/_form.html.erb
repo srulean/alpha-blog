@@ -1,11 +1,5 @@
-<% if @article.errors.any? %>
-<h2>Errors!</h2>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+
+<%= render 'shared/errors', obj: @article %>
 
 <div class='row'>
   <div class='col-xs-12'>
@@ -44,7 +38,7 @@
       [ <%= link_to "Cancel & Return", articles_path %> ]
     </div>
     
-    <!-- first, un-styled approach
+    <!-- first, un-styled approach 
     <%= form_for @article do |fff| %>
       <p>
         <%= fff.label :title %> <br>
