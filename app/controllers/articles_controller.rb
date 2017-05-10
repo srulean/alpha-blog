@@ -19,6 +19,9 @@ class ArticlesController < ApplicationController
   def create
     # Used by the new funciotn above.
     @article = Article.new(article_params)
+    # temporarily provide default user
+    @article.user = User.first
+    
     if @article.save
       flash[:success] = "Article was successfully created."
       redirect_to article_path(@article)
