@@ -27,13 +27,29 @@
       </div>
       
       <div class='form-group'>
-        <div class='col-sm-offset-2 col-sm-8'>
+        <div class='col-sm-offset-2 col-sm-2'>
           <%= fff.submit class: 'btn btn-primary btn-lrg' %>
         </div>
+        
+        <!-- Example three ways to handle cancel action -->
+        
+        <!-- 1) A button, using erb (and bootstrap) -->
+        <div class="col-sm-2">
+          <%= link_to 'Cancel(rb)', :back, class: 'btn btn-primary btn-lrg'%>
+        </div>
+        
+        <!-- 2) A button using html (and bootstrap) -->
+        <!-- Not yet working.  Tries to Submit instead of just go back. -->
+        <div class="col-sm-2">
+          <form action='/'>
+            <input type='submit' value='Cancel(html)' class='btn btn-primary btn-lrg'>
+          </form>
+        </div>
       </div>
+      
     <% end %>
     
-    <!-- Try to make the cancle action a button, just like the create action -->
+    <!-- 3) A link -->
     <div class="col-xs-4 col-xs-offset-4">
       [ <%= link_to "Cancel & Return", articles_path %> ]
     </div>
