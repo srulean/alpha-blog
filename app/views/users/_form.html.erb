@@ -1,0 +1,67 @@
+<%= render 'shared/errors', obj: @user %>
+
+<div class='row'>
+  <div class='col-xs-12'>
+    
+    <!-- Can mamnage forms easy wirh ruby "forms for" -->
+    
+    <!-- This stacks vertically because each uses column2 (col-sm-2) -->
+    <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |fff| %>
+      <div class='form-group'>
+        <div class='control-label col-sm-2'>
+          <%= fff.label :username %>
+        </div>
+        <div class='col-sm-8'>
+          <%= fff.text_field :username, class: "form-control", placeholder: "Enter User Name", autofocus: true %>
+        </div>
+      </div>
+      
+      <div class='form-group'>
+        <div class='control-label col-sm-2'>
+          <%= fff.label :email %>
+        </div>
+        <div class='col-sm-8'>
+          <%= fff.email_field :email, class: "form-control", placeholder: "Enter Email" %>
+        </div>
+      </div>
+      
+      <div class='form-group'>
+        <div class='control-label col-sm-2'>
+          <%= fff.label :password %>
+        </div>
+        <div class='col-sm-8'>
+          <%= fff.password_field :password, class: "form-control", placeholder: "Enter Password" %>
+        </div>
+      </div>
+      
+      <div class='form-group'>
+        <div class='col-sm-offset-2 col-sm-2'>
+          <%= fff.submit(@user.new_record? ? "Sign Up" : "Update", class: 'btn btn-primary btn-lrg') %>
+        </div>
+        
+        <!-- Example three ways to handle cancel action -->
+        
+        <!-- 1) A button, using erb (and bootstrap) -->
+        <!-- Going back does not always work - like for editing. -->
+        <div class="col-sm-2">
+          <%= link_to 'Cancel(rb)', :back, class: 'btn btn-primary btn-lrg'%>
+        </div>
+        
+        <!-- 2) A button using html (and bootstrap) -->
+        <!-- Not yet working.  Tries to Submit instead of just go back. -->
+        <div class="col-sm-2">
+          <form action='/'>
+            <input type='submit' value='Cancel(html)' class='btn btn-primary btn-lrg'>
+          </form>
+        </div>
+      </div>
+      
+    <% end %>
+    
+    <!-- 3) A link -->
+    <div class="col-xs-4 col-xs-offset-4">
+      [ <%= link_to "Cancel & Return", articles_path %> ]
+    </div>
+    
+  </div>
+</div>
