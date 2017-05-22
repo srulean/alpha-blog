@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
     # Used by the new funciotn above.
     @article = Article.new(article_params)
     # temporarily provide default user
-    @article.user = User.first
+    @article.user = current_user
     
     if @article.save
       flash[:success] = "Article was successfully created."
