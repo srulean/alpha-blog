@@ -20,13 +20,4 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  # We assume @article is avaialble becasue of the order of the
-  # before-action list in articles_controller.rb.
-  # This is fragile, though, so use with care.
-  def require_same_user
-    if current_user != @article.user
-      flash[:danger] = "You can only edit/delete your own aricles."
-      redirect_to root_path
-    end
-  end
 end

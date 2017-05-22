@@ -69,5 +69,15 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :description)
     end
+    
+    # We assume @article is avaialble becasue of the order of the
+    # before-action list in articles_controller.rb.
+    # This is fragile, though, so use with care.
+    def require_same_user
+      if current_user != @article.user and !current_user.admin?
+        flash[:danger] = "You can only edit/delete your own aricles."
+        redirect_to root_path
+      end
+    end
   
 end
