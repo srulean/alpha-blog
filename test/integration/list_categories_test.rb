@@ -1,11 +1,11 @@
 require 'test_helper'
 
-class CreateCategoriesTest < ActionDispatch::IntegrationTest
+class ListCategoriesTest < ActionDispatch::IntegrationTest
   
   def setup
     # another etst already created a categroy callwed "sports".  if
     # we create another here, it may cause problems with the tests.
-    @category = Category.create(name: "entertainment")
+    @category = Category.create(name: "sports")
     @category2 = Category.create(name: "dev")
   end  
   
