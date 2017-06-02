@@ -1,0 +1,22 @@
+<%= render 'shared/errors', obj: @category %>
+
+<%= form_for(@category, :html => {class: "form-horizontal", role: "form"}) do |fff| %>
+  <div class='form-group'>
+    <div class='control-label col-sm-2'>
+      <%= fff.label :category %>
+    </div>
+    <div class='col-sm-8'>
+      <%= fff.text_field :name, class: "form-control", placeholder: "Enter Category Name", autofocus: true %>
+    </div>
+  </div>
+  
+  <div class='form-group'>
+    <div class='col-sm-offset-2 col-sm-2'>
+      <%= fff.submit class: 'btn btn-primary btn-lrg' %>
+    </div>
+  </div>
+<% end %>
+
+<div class="col-xs-4 col-xs-offset-4">
+  [ <%= link_to "Cancel & Return", articles_path %> ]
+</div>
